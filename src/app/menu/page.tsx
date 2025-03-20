@@ -13,38 +13,29 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import styles from "./page.module.css";
 
 
-// Amplify Cognito のプール ID やクライアント ID を設定（直接設定）
+// Amplify Cognito のプール ID やクライアント ID を設定
 // Amplify.configure({
 //    Auth: {
 //      Cognito: {
 //        userPoolClientId: '7fuir9ha192fghv1nucqspurs9',
 //        userPoolId: 'ap-northeast-1_f5vZ9oTLK',
-//       }
-//     }
+//   }
+//   }
 // })
 
-// Amplify Cognito のプール ID やクライアント ID を設定(ファイルからimport)
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
 
-
-export default function App() {
-
-  const saveUser = (username: string) => {
-    localStorage.setItem("username",username)
-    return username
-  }
+export default function Menu() {
 
   return (
     <Authenticator>
       {({ signOut, user }) => (
         <main>
-          <h1>Top ページ</h1>
-          <h2>Hello {saveUser(user.username)}</h2>
+          <h1>Menu ページ</h1>
+          <h2>Login user is {user.username}</h2>
           <button onClick={signOut}>Sign out</button>
           <ul>
             <li>
-              <Link href="/menu">menu ページ</Link>
+              <Link href="/">Top ページ</Link>
             </li>
             <li>
               <Link href="/info">info ページ</Link>
